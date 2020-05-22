@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import com.example.monapplicationtd3.Constants;
+import com.example.monapplicationtd3.Singletons;
 import com.example.monapplicationtd3.data.PokeApi;
 import com.example.monapplicationtd3.presentation.model.Natures;
 import com.example.monapplicationtd3.presentation.model.RestPokemonResponse;
@@ -46,14 +47,8 @@ public class MainController {
 
     private void makeApiCall(){
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
 
-        PokeApi pokeApi = retrofit.create(PokeApi.class);
-
-        Call<RestPokemonResponse> call = pokeApi.getPokemonResponse();
+        Call<RestPokemonResponse> call = Singletons.getPokeApi().getPokemonResponse();
         call.enqueue(new Callback<RestPokemonResponse>() {
             @Override
             public void onResponse(Call<RestPokemonResponse> call, Response<RestPokemonResponse> response) {

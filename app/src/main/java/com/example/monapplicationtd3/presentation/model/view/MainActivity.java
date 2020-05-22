@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.monapplicationtd3.Constants;
 import com.example.monapplicationtd3.R;
+import com.example.monapplicationtd3.Singletons;
 import com.example.monapplicationtd3.data.PokeApi;
 import com.example.monapplicationtd3.presentation.model.Natures;
 import com.example.monapplicationtd3.presentation.model.RestPokemonResponse;
@@ -43,10 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
         controller = new MainController(
                 this,
-            new GsonBuilder()
-                    .setLenient()
-                    .create(),
-           getSharedPreferences("application_joela", Context.MODE_PRIVATE)
+                Singletons.getGson(),
+                Singletons.getSharedPreferences(getApplicationContext())
         );
 
         controller.onStart();
