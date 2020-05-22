@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -90,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void navigateToDetails(Natures natures) {
-        Toast.makeText(this  , "TODO NAVIGATE", Toast.LENGTH_SHORT).show();
+        Intent myIntent = new Intent(MainActivity.this, DetailActivity.class);
+        myIntent.putExtra("naturesKey", Singletons.getGson().toJson(natures));
+        MainActivity.this.startActivity(myIntent);
     }
 }
