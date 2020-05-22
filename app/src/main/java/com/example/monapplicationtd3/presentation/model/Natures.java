@@ -1,4 +1,4 @@
-package com.example.monapplicationtd3;
+package com.example.monapplicationtd3.presentation.model;
 
 public class Natures {
     private String name;

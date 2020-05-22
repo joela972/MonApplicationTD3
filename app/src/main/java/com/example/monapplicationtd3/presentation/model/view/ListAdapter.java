@@ -1,14 +1,13 @@
-package com.vogella.android.recyclerview;
+package com.example.monapplicationtd3.presentation.model.view;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.monapplicationtd3.Natures;
+import com.example.monapplicationtd3.presentation.model.Natures;
 import com.example.monapplicationtd3.R;
 
 import java.util.List;

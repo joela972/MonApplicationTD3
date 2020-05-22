@@ -1,4 +1,4 @@
-package com.example.monapplicationtd3;
+package com.example.monapplicationtd3.presentation.model.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -10,13 +10,16 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.monapplicationtd3.Constants;
+import com.example.monapplicationtd3.R;
+import com.example.monapplicationtd3.data.PokeApi;
+import com.example.monapplicationtd3.presentation.model.Natures;
+import com.example.monapplicationtd3.presentation.model.RestPokemonResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.vogella.android.recyclerview.ListAdapter;
 
 import java.lang.reflect.Type;
-import java.util.List;
 import java.util.List;
 
 import retrofit2.Call;
@@ -26,6 +29,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String BASE_URL = "https://pokeapi.co/";
 
     private RecyclerView recyclerView;
     private ListAdapter mAdapter;
@@ -92,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
-    private static final String BASE_URL = "https://pokeapi.co/";
 
     private void makeApiCall(){
 
