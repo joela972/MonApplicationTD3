@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.monapplicationtd3.R;
 import com.example.monapplicationtd3.Singletons;
+import com.example.monapplicationtd3.data.PokeRepository;
 import com.example.monapplicationtd3.presentation.model.Natures;
 import com.example.monapplicationtd3.presentation.model.controller.MainController;
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
 
     private MainController controller;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,13 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
         controller = new MainController(
                 this,
-                this,
-                Singletons.getGson(),
-                Singletons.getSharedPreferences(getApplicationContext())
-                 );
+        this,
+
 
         controller.onStart();
-    }
+        }
 
 
 
