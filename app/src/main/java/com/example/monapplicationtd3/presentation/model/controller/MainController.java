@@ -90,7 +90,7 @@ public class MainController {
     }
 
     public void onItemClick(Natures natures){
-
+        view.navigateToDetails(natures);
     }
 
     public void onButtonAClick(){

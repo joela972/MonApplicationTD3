@@ -5,30 +5,16 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
-import com.example.monapplicationtd3.Constants;
 import com.example.monapplicationtd3.R;
 import com.example.monapplicationtd3.Singletons;
-import com.example.monapplicationtd3.data.PokeApi;
 import com.example.monapplicationtd3.presentation.model.Natures;
-import com.example.monapplicationtd3.presentation.model.RestPokemonResponse;
 import com.example.monapplicationtd3.presentation.model.controller.MainController;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,8 +48,20 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+        recyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         // define an adapter
-        mAdapter = new ListAdapter(naturesList);
+        mAdapter = new ListAdapter(naturesList, new ListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Natures item) {
+                controller.onItemClick(item);
+            }
+        });
         recyclerView.setAdapter(mAdapter);
 
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback =
@@ -89,5 +87,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void showError() {
         Toast.makeText(this  , "API Error", Toast.LENGTH_SHORT).show();
+    }
+
+    public void navigateToDetails(Natures natures) {
+        Toast.makeText(this  , "TODO NAVIGATE", Toast.LENGTH_SHORT).show();
     }
 }
